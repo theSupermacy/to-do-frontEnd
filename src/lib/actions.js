@@ -1,9 +1,12 @@
-import { onPinTask, onArchiveTask } from './../lib/actions';
-import { ON_PINNED_TASK } from './Constants';
+import { ON_PINNED_TASK, ON_ARCHIVE_TASK } from './Constants';
 
 export const onPinTask = function(id) {
   return {
     type: ON_PINNED_TASK,
-    payload: id,
+    payload: { id },
   };
+};
+
+export const onArchiveTask = function(id) {
+  return { type: ON_ARCHIVE_TASK, payload: { id } };
 };

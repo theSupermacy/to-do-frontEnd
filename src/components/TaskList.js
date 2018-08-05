@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { onPinTask, onArchiveTask } from './../lib/actions';
+import { ON_ARCHIVE_TASK } from '../lib/Constants';
 
 export function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
   const events = {
@@ -47,12 +48,7 @@ export function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
   return (
     <div className="list-items">
       {priorityTasks.map(singleTask => (
-        <Task
-          {...events}
-          key={singleTask.id}
-          task={singleTask}
-          key={singleTask.id}
-        />
+        <Task {...events} key={singleTask.id} task={singleTask} />
       ))}
     </div>
   );
@@ -72,7 +68,10 @@ const mapStateToProps = state => {
     tasks,
   };
 };
-const dispatchActionToProps = dispatch => {};
+const dispatchActionToProps = dispatch => ({
+  onPinTask: id => dispatch(onPinTask(id)),
+  onArchiveTask: id => dispatch(onArchiveTask(id)),
+});
 export default connect(
   mapStateToProps,
   dispatchActionToProps
