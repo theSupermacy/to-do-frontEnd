@@ -16,6 +16,9 @@
 .env.test.local
 .env.production.local
 
+#story book build folder
+/storybook-static
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
